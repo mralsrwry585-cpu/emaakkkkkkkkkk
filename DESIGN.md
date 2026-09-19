@@ -38,14 +38,14 @@ visual direction — read and preserve them on every subsequent build; do not
 re-derive a new direction. The first UI pass must fill these fields in as
 part of that build, not leave them as an empty template.
 
-- Product mode: `operate` | `read` | `persuade` | `experience`
-- Audience and cadence:
-- Visual world (name + the feeling it creates):
-- Palette family + neutral undertone:
-- Type treatment:
-- Composition:
-- Shape language:
-- Anti-references (defaults this app must not drift toward):
+- Product mode: `experience` with an `operate` core
+- Audience and cadence: Deaf, hard-of-hearing, and hearing Arabic speakers returning daily for quick translation, practice, and discovery
+- Visual world (name + the feeling it creates): Human Signal — quiet intelligence, warm trust, and the feeling of being understood in real time
+- Palette family + neutral undertone: Ink navy and soft lilac over a cool blue-grey neutral, with a restrained lime signal accent for live status
+- Type treatment: Arabic-first geometric sans hierarchy; generous line height, compact labels, high-contrast numbers, and no decorative display face
+- Composition: Mobile-native editorial rhythm with one dominant action, immersive media moments, and secondary content in calm horizontal rails
+- Shape language: Soft asymmetric capsules and nested arcs used sparingly; dark stage surfaces contrast with pale app surfaces
+- Anti-references (defaults this app must not drift toward): Generic AI dashboards, purple gradients, cyberpunk HUDs, card grids, childish gamification, Zoom clones, and English-first layouts
 
 ## Agent-native is structural, not visual
 
