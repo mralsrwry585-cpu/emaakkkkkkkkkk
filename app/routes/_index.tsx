@@ -21,8 +21,8 @@ import {
 const navItems = [
   { label: "الرئيسية", icon: IconHome2, href: "/" },
   { label: "الترجمة", icon: IconMessageCircle2, href: "/translate" },
-  { label: "القاموس", icon: IconSearch, href: "/" },
-  { label: "التعلّم", icon: IconBook2, href: "/" },
+  { label: "القاموس", icon: IconSearch, href: "/dictionary" },
+  { label: "التعلّم", icon: IconBook2, href: "/learning" },
   { label: "حسابي", icon: IconUserCircle, href: "/" },
 ];
 
