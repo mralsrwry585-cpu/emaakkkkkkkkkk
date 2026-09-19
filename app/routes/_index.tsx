@@ -9,6 +9,7 @@ import {
   IconClock,
   IconHandFinger,
   IconHome2,
+  IconMenu2,
   IconMessageCircle2,
   IconMicrophone,
   IconPlayerPlayFilled,
@@ -16,228 +17,64 @@ import {
   IconSettings,
   IconUserCircle,
   IconVideo,
+  IconX,
 } from "@tabler/icons-react";
 
 const navItems = [
   { label: "الرئيسية", icon: IconHome2, href: "/" },
   { label: "الترجمة", icon: IconMessageCircle2, href: "/translate" },
-  { label: "القاموس", icon: IconSearch, href: "/dictionary" },
+  { label: "محادثة", icon: IconVideo, href: "/conversation" },
   { label: "التعلّم", icon: IconBook2, href: "/learning" },
   { label: "حسابي", icon: IconUserCircle, href: "/" },
 ];
 
-function LogoMark() {
-  return (
-    <div className="flex items-center gap-2.5" dir="ltr">
-      <div className="eemaa-logo-mark" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="leading-none">
-        <p className="text-[15px] font-extrabold tracking-[-0.04em] text-[#252c54]">Eemaa</p>
-        <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#777b9b]">إيماء</p>
-      </div>
-    </div>
-  );
+function Brand() {
+  return <div className="flex items-center gap-2.5" dir="ltr"><div className="eemaa-logo-mark" aria-hidden="true"><span /><span /><span /></div><div className="leading-none"><p className="text-[15px] font-extrabold tracking-[-0.04em] text-[#23322d]">Eemaa</p><p className="mt-1 text-[9px] font-bold tracking-[0.14em] text-[#7d8a83]">إيماء</p></div></div>;
 }
 
 function BottomNav() {
   const navigate = useNavigate();
-  return (
-    <nav className="eemaa-bottom-nav" aria-label="التنقل الرئيسي">
-      {navItems.map((item, index) => {
-        const Icon = item.icon;
-        const active = index === 0;
-        return (
-          <button
-            key={item.label}
-            type="button"
-            onClick={() => navigate(item.href)}
-            className={`eemaa-nav-item ${active ? "is-active" : ""}`}
-            aria-current={active ? "page" : undefined}
-          >
-            <Icon size={20} stroke={active ? 2.3 : 1.8} />
-            <span>{item.label}</span>
-          </button>
-        );
-      })}
-    </nav>
-  );
+  return <nav className="eemaa-bottom-nav" aria-label="التنقل الرئيسي">{navItems.map((item, index) => { const Icon = item.icon; const active = index === 0; return <button key={item.label} type="button" onClick={() => navigate(item.href)} className={`eemaa-nav-item ${active ? "is-active" : ""}`} aria-current={active ? "page" : undefined}><Icon size={19} stroke={active ? 2.1 : 1.7} /><span>{item.label}</span></button>; })}</nav>;
 }
 
-function SignalVisual() {
-  return (
-    <div className="eemaa-signal-visual" aria-hidden="true">
-      <div className="eemaa-orbit eemaa-orbit-one" />
-      <div className="eemaa-orbit eemaa-orbit-two" />
-      <div className="eemaa-signal-core">
-        <IconHandFinger size={84} stroke={1.2} />
-      </div>
-      <span className="eemaa-signal-dot dot-one" />
-      <span className="eemaa-signal-dot dot-two" />
-      <span className="eemaa-signal-dot dot-three" />
-    </div>
-  );
+function Drawer({ onClose }: { onClose: () => void }) {
+  const navigate = useNavigate();
+  const items = [
+    { label: "الرئيسية", icon: IconHome2, href: "/" },
+    { label: "الترجمة", icon: IconMessageCircle2, href: "/translate" },
+    { label: "المحادثة", icon: IconVideo, href: "/conversation" },
+    { label: "القاموس", icon: IconSearch, href: "/dictionary" },
+    { label: "رحلة التعلّم", icon: IconBook2, href: "/learning" },
+  ];
+  return <div className="eemaa-drawer-layer" role="presentation"><button type="button" className="eemaa-drawer-backdrop" onClick={onClose} aria-label="إغلاق القائمة" /><aside className="eemaa-drawer" role="dialog" aria-label="قائمة إيماء"><div className="flex items-center justify-between"><Brand /><button type="button" onClick={onClose} className="eemaa-soft-icon" aria-label="إغلاق القائمة"><IconX size={19} /></button></div><div className="eemaa-drawer-profile mt-8"><div className="eemaa-profile-avatar">ن</div><div><p className="text-sm font-extrabold text-[#23322d]">نورة أحمد</p><p className="mt-1 text-[11px] text-[#78877e]">رحلة تعلّم مستمرة</p></div><IconChevronLeft size={16} className="mr-auto text-[#9aa59e]" /></div><div className="mt-8 space-y-1">{items.map((item, index) => { const Icon = item.icon; return <button key={item.label} type="button" onClick={() => { navigate(item.href); onClose(); }} className={`eemaa-drawer-item ${index === 0 ? "is-active" : ""}`}><Icon size={19} /><span>{item.label}</span></button>; })}</div><div className="mt-8 border-t border-[#e5e9e3] pt-6"><p className="eemaa-drawer-label">مساحة شخصية</p><button type="button" className="eemaa-drawer-item"><IconBookmark size={19} /><span>المحفوظات</span></button><button type="button" className="eemaa-drawer-item"><IconSettings size={19} /><span>الإعدادات وإمكانية الوصول</span></button></div><div className="mt-auto rounded-[22px] bg-[#edf2e8] p-4"><p className="text-[13px] font-extrabold text-[#41564d]">تواصلي بطريقتك</p><p className="mt-2 text-[11px] leading-5 text-[#789084]">نحن هنا لنجعل كل إشارة مفهومة.</p></div></aside></div>;
 }
 
 export function meta() {
-  return [
-    { title: "Eemaa | إيماء" },
-    { name: "description", content: "منصة إيماء للترجمة والتواصل بلغة الإشارة" },
-  ];
+  return [{ title: "Eemaa | إيماء" }, { name: "description", content: "منصة إيماء للترجمة والتواصل بلغة الإشارة" }];
 }
 
 export default function HomeRoute() {
   const navigate = useNavigate();
   const [saved, setSaved] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  return (
-    <div className="eemaa-page min-h-full" dir="rtl">
-      <div className="eemaa-shell mx-auto max-w-[1240px] px-5 pb-32 pt-5 sm:px-8 lg:px-10 lg:pb-10">
-        <header className="flex items-center justify-between gap-4">
-          <LogoMark />
-          <div className="flex items-center gap-2">
-            <button className="eemaa-icon-button" type="button" aria-label="الإشعارات">
-              <IconBell size={19} stroke={1.8} />
-              <span className="eemaa-notification-dot" />
-            </button>
-            <button className="eemaa-avatar" type="button" aria-label="فتح الحساب">
-              ن
-            </button>
-          </div>
-        </header>
+  return <div className="eemaa-page min-h-full" dir="rtl">
+    <div className="eemaa-shell mx-auto max-w-[1120px] px-5 pb-32 pt-3 sm:px-8 lg:px-10 lg:pb-10">
+      <header className="eemaa-topbar"><button type="button" onClick={() => setDrawerOpen(true)} className="eemaa-soft-icon" aria-label="فتح القائمة"><IconMenu2 size={20} /></button><Brand /><div className="flex items-center gap-2"><button type="button" className="eemaa-soft-icon" aria-label="الإشعارات"><IconBell size={19} /><span className="eemaa-notification-dot" /></button><button type="button" className="eemaa-profile-avatar small" aria-label="فتح الحساب">ن</button></div></header>
 
-        <main className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-12 lg:pt-8">
-          <section>
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="eemaa-kicker">الأربعاء، ٢٤ أبريل</p>
-                <h1 className="mt-2 text-[29px] font-extrabold leading-[1.25] tracking-[-0.04em] text-[#252c54] sm:text-[34px]">
-                  مساء الخير، نورة
-                </h1>
-              </div>
-              <button className="hidden rounded-full p-2 text-[#777b9b] transition-colors hover:bg-white hover:text-[#252c54] sm:block" type="button" aria-label="الإعدادات">
-                <IconSettings size={21} stroke={1.8} />
-              </button>
-            </div>
+      <main className="mx-auto mt-7 max-w-[760px] lg:mt-10">
+        <section className="flex items-end justify-between gap-5"><div><p className="eemaa-kicker">الأربعاء، ٢٤ أبريل</p><h1 className="mt-2 text-[28px] font-extrabold leading-[1.35] tracking-[-0.04em] text-[#23322d] sm:text-[36px]">مساء الخير، نورة</h1></div><button type="button" className="hidden rounded-full p-2 text-[#718078] transition-colors hover:bg-white sm:block" aria-label="الإعدادات"><IconSettings size={20} /></button></section>
 
-            <button
-              type="button"
-              onClick={() => navigate("/translate")}
-              className="eemaa-hero-action group mt-7 w-full text-right"
-            >
-              <div className="relative z-10 flex min-h-[292px] flex-col justify-between p-6 sm:min-h-[325px] sm:p-8">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span className="eemaa-live-pill"><span /> متصل الآن</span>
-                    <h2 className="mt-5 max-w-[270px] text-[25px] font-bold leading-[1.3] tracking-[-0.03em] text-white sm:text-[30px]">
-                      خلّينا نفهم<br /> إشارتك.
-                    </h2>
-                  </div>
-                  <div className="rounded-full border border-white/15 bg-white/10 p-3 text-[#d9e1ff] backdrop-blur-sm">
-                    <IconArrowUpLeft size={22} stroke={1.8} />
-                  </div>
-                </div>
-                <div className="flex items-end justify-between gap-4">
-                  <p className="max-w-[190px] text-[13px] leading-6 text-[#bfc8ec]">
-                    ترجمة فورية من لغة الإشارة إلى العربية والصوت
-                  </p>
-                  <span className="eemaa-hero-cta group-hover:bg-[#d8f577]">ابدأ الترجمة</span>
-                </div>
-              </div>
-              <SignalVisual />
-            </button>
+        <section className="eemaa-home-hero mt-7"><div className="eemaa-home-hero-image"><img src="https://images.pexels.com/photos/33647890/pexels-photo-33647890.jpeg" alt="يدان تلتقيان في لحظة تواصل" /></div><div className="eemaa-home-hero-copy"><div><span className="eemaa-eyebrow-pill"><span /> جاهزة للاستماع</span><h2 className="mt-5 max-w-[240px] text-[27px] font-extrabold leading-[1.35] tracking-[-0.04em] text-[#23322d]">كل إشارة<br />تستحق أن تُفهم.</h2><p className="mt-3 max-w-[220px] text-[12px] leading-6 text-[#68786f]">ابدئي ترجمة فورية بلغة قريبة منك.</p></div><button type="button" onClick={() => navigate("/translate")} className="eemaa-primary-button mt-7 w-fit">ابدئي الترجمة <IconArrowUpLeft size={17} /></button></div></section>
 
-            <div className="mt-5 flex items-center gap-3 overflow-x-auto pb-1">
-              <button type="button" onClick={() => navigate("/translate")} className="eemaa-quick-action eemaa-quick-action-primary">
-                <IconHandFinger size={19} />
-                <span>إشارة إلى نص</span>
-              </button>
-              <button type="button" onClick={() => navigate("/translate?mode=voice")} className="eemaa-quick-action">
-                <IconMicrophone size={18} />
-                <span>صوت إلى إشارة</span>
-              </button>
-              <button type="button" onClick={() => navigate("/translate?mode=text")} className="eemaa-quick-action">
-                <IconVideo size={18} />
-                <span>نص إلى إشارة</span>
-              </button>
-            </div>
-          </section>
+        <section className="mt-5"><div className="eemaa-section-heading"><h2>تواصلي بطريقتك</h2><span>اختاري نقطة البداية</span></div><div className="eemaa-mode-rail"><button type="button" onClick={() => navigate("/translate")} className="eemaa-mode-tile is-featured"><span className="eemaa-mode-icon"><IconHandFinger size={21} /></span><span><strong>إشارة إلى نص</strong><small>ترجمة مباشرة</small></span><IconArrowUpLeft size={16} /></button><button type="button" onClick={() => navigate("/translate?mode=voice")} className="eemaa-mode-tile"><span className="eemaa-mode-icon"><IconMicrophone size={20} /></span><span><strong>صوت إلى إشارة</strong><small>افهمي المعنى بصريًا</small></span></button><button type="button" onClick={() => navigate("/translate?mode=text")} className="eemaa-mode-tile"><span className="eemaa-mode-icon"><IconVideo size={20} /></span><span><strong>نص إلى إشارة</strong><small>شاهدي التعبير</small></span></button><button type="button" onClick={() => navigate("/conversation")} className="eemaa-mode-tile"><span className="eemaa-mode-icon"><IconMessageCircle2 size={20} /></span><span><strong>محادثة مباشرة</strong><small>ترجمة أثناء الاتصال</small></span></button></div></section>
 
-          <section className="space-y-5 lg:pt-[73px]">
-            <div className="eemaa-progress-panel">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <span className="eemaa-section-label">رحلتك هذا الأسبوع</span>
-                  <h2 className="mt-2 text-[22px] font-bold tracking-[-0.03em] text-[#252c54]">خطوة صغيرة، أثر كبير</h2>
-                </div>
-                <div className="eemaa-progress-number">68<span>%</span></div>
-              </div>
-              <div className="mt-6 h-2 overflow-hidden rounded-full bg-[#e8e9f4]">
-                <div className="h-full w-[68%] rounded-full bg-[#b6d93d]" />
-              </div>
-              <div className="mt-4 flex items-center justify-between text-[12px] font-semibold text-[#777b9b]">
-                <span>٤ من ٦ جلسات مكتملة</span>
-                <button type="button" className="flex items-center gap-1 text-[#545b89]">تابعي الرحلة <IconChevronLeft size={15} /></button>
-              </div>
-            </div>
+        <section className="mt-8 grid gap-4 sm:grid-cols-[1.1fr_.9fr]"><div className="eemaa-light-module"><div className="flex items-start justify-between gap-3"><div><span className="eemaa-section-label">رحلة التعلّم</span><h2 className="mt-2 text-[19px] font-extrabold text-[#23322d]">خطوة صغيرة، أثر كبير</h2></div><span className="eemaa-progress-value">٦٨<small>%</small></span></div><div className="eemaa-progress-track mt-5"><span /></div><div className="mt-3 flex items-center justify-between text-[11px] font-bold text-[#819087]"><span>٤ من ٦ جلسات</span><button type="button" onClick={() => navigate("/learning")} className="flex items-center gap-1 text-[#496157]">تابعي الرحلة <IconChevronLeft size={14} /></button></div></div><button type="button" onClick={() => setSaved(!saved)} className="eemaa-sign-note text-right"><div className="eemaa-sign-note-art"><IconHandFinger size={38} /></div><div className="min-w-0 flex-1"><span className="eemaa-section-label">إشارة اليوم</span><p className="mt-2 text-[17px] font-extrabold text-[#23322d]">صباح الخير</p><p className="mt-1 text-[11px] text-[#7c8a82]">التحية التي تبدأ بها يومًا أفضل</p></div><IconBookmark size={18} className={saved ? "text-[#5e7437]" : "text-[#9ca79f"} fill={saved ? "currentColor" : "none"} /></button></section>
 
-            <div className="eemaa-discovery-panel">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="eemaa-section-label">اكتشاف اليوم</span>
-                  <h2 className="mt-2 text-[22px] font-bold tracking-[-0.03em] text-[#252c54]">إشارات تشبه يومك</h2>
-                </div>
-                <button type="button" className="rounded-full p-2 text-[#777b9b] transition-colors hover:bg-[#f0eff9]" aria-label="فتح القاموس">
-                  <IconChevronLeft size={20} />
-                </button>
-              </div>
-              <div className="mt-5 flex items-center gap-4">
-                <div className="eemaa-sign-thumbnail">
-                  <IconHandFinger size={40} stroke={1.25} />
-                  <span>اليوم</span>
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[19px] font-bold text-[#252c54]">صباح الخير</p>
-                  <p className="mt-1 text-[12px] leading-5 text-[#777b9b]">التحية التي تبدأ بها يومًا أفضل</p>
-                  <div className="mt-3 flex items-center gap-2 text-[11px] font-semibold text-[#9799ae]">
-                    <IconPlayerPlayFilled size={10} /> ٠:٢٨ · أساسي
-                  </div>
-                </div>
-                <button type="button" onClick={() => setSaved(!saved)} className={`eemaa-save-button ${saved ? "is-saved" : ""}`} aria-label={saved ? "إزالة من المحفوظات" : "حفظ الإشارة"}>
-                  <IconBookmark size={18} fill={saved ? "currentColor" : "none"} />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-[#e2e3ee] pt-5">
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-2xl bg-[#e8e6f4] text-[#555c8b]"><IconClock size={18} /></div>
-                <div>
-                  <p className="text-[13px] font-bold text-[#3d4264]">آخر نشاط</p>
-                  <p className="mt-1 text-[12px] text-[#8b8da4]">ترجمة “أحتاج مساعدة”</p>
-                </div>
-              </div>
-              <IconChevronLeft size={17} className="text-[#a2a3b6]" />
-            </div>
-          </section>
-        </main>
-
-        <section className="mt-10 hidden rounded-[28px] bg-[#e9e8f5] p-5 lg:block">
-          <div className="flex items-center justify-between gap-5">
-            <div className="flex items-center gap-4">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#252c54] text-[#d8f577]"><IconVideo size={22} /></div>
-              <div>
-                <p className="text-[15px] font-bold text-[#252c54]">تواصلي بشكل أوضح</p>
-                <p className="mt-1 text-[12px] text-[#777b9b]">مكالمة مباشرة مع ترجمة الإشارة مفعّلة</p>
-              </div>
-            </div>
-            <button type="button" className="flex items-center gap-2 rounded-full bg-[#252c54] px-5 py-3 text-[12px] font-bold text-white transition-transform hover:-translate-y-0.5">ابدئي محادثة <IconArrowUpLeft size={16} /></button>
-          </div>
-        </section>
-      </div>
-      <BottomNav />
+        <section className="mt-8 flex items-center justify-between border-t border-[#e1e7e0] pt-5"><div className="flex items-center gap-3"><div className="flex size-10 items-center justify-center rounded-2xl bg-[#e9efe7] text-[#5a7065]"><IconClock size={18} /></div><div><p className="text-[13px] font-extrabold text-[#46584f]">آخر نشاط</p><p className="mt-1 text-[11px] text-[#87948c]">ترجمة “أحتاج مساعدة”</p></div></div><IconChevronLeft size={17} className="text-[#9da8a1]" /></section>
+      </main>
     </div>
-  );
+    <BottomNav />
+    {drawerOpen ? <Drawer onClose={() => setDrawerOpen(false)} /> : null}
+  </div>;
 }

@@ -18,10 +18,17 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <HeaderActionsProvider>
-      <div className="flex h-screen w-full flex-col overflow-hidden bg-background text-foreground">
-        <main className="agent-native-app-main min-w-0 flex-1 overflow-y-auto overscroll-contain">
-          {children}
-        </main>
+      <div className="eemaa-device-stage">
+        <div className="eemaa-device-shell">
+          <div className="eemaa-status-bar" aria-hidden="true">
+            <span>٩:٤١</span>
+            <span className="flex items-center gap-1"><i className="eemaa-signal-bars" /><i className="eemaa-wifi" /><i className="eemaa-battery" /></span>
+          </div>
+          <main className="agent-native-app-main min-w-0 flex-1 overflow-y-auto overscroll-contain">
+            {children}
+          </main>
+          <div className="eemaa-home-indicator" aria-hidden="true" />
+        </div>
       </div>
     </HeaderActionsProvider>
   );

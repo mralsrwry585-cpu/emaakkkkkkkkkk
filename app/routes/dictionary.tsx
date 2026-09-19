@@ -12,6 +12,7 @@ import {
   IconPlayerPlayFilled,
   IconSearch,
   IconUserCircle,
+  IconVideo,
 } from "@tabler/icons-react";
 
 const categories = ["الكل", "التحية", "المشاعر", "الاحتياجات", "الأفعال"];
@@ -26,7 +27,7 @@ function BottomNav() {
   const items = [
     { label: "الرئيسية", icon: IconHome2, href: "/" },
     { label: "الترجمة", icon: IconMessageCircle2, href: "/translate" },
-    { label: "القاموس", icon: IconSearch, href: "/dictionary" },
+    { label: "محادثة", icon: IconVideo, href: "/conversation" },
     { label: "التعلّم", icon: IconBook2, href: "/learning" },
     { label: "حسابي", icon: IconUserCircle, href: "/" },
   ];
