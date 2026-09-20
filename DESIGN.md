@@ -40,12 +40,12 @@ part of that build, not leave them as an empty template.
 
 - Product mode: `experience` with an `operate` core
 - Audience and cadence: Deaf, hard-of-hearing, and hearing Arabic speakers returning daily for quick translation, practice, and discovery
-- Visual world (name + the feeling it creates): Blue Thread — a luminous, human technology world where sapphire clarity, cyan energy, and warm skin tones make every interaction feel like a bridge
-- Palette family + neutral undertone: Ink navy and mineral white neutrals, sapphire and ocean blue as the brand spine, cyan-teal for live translation, coral and amber for human warmth and status, with violet used only as a quiet learning accent
+- Visual world (name + the feeling it creates): Blue Prism — a bright, human communication world where sapphire clarity, cyan energy, and warm portrait tones make every exchange feel close and understandable
+- Palette family + neutral undertone: Mineral white and cool mist surfaces, sapphire and ocean blue as the brand spine, cyan-teal for live translation, coral and amber for human warmth and status, with violet used only as a quiet learning accent
 - Type treatment: Almarai throughout; confident Arabic headlines, compact utility labels, generous line-height for comprehension, and numerals treated as visual anchors
-- Composition: Real smartphone presentation with editorial mobile modules, one dominant communication action, cinematic image crops, layered compositions, and progressive disclosure
-- Shape language: Floating sculpted navigation, asymmetric hero crops, framed visual stages, controlled pill shapes for status, and a small radius hierarchy instead of one universal card shape
-- Anti-references (defaults this app must not drift toward): Dark themes, generic AI dashboards, purple gradients, neon cyberpunk, repeated white card grids, childish gamification, Zoom clones, flat icon menus, and English-first layouts
+- Composition: Real smartphone presentation with editorial mobile modules, one dominant communication action, cinematic image crops, layered light surfaces, and progressive disclosure
+- Shape language: Floating sculpted navigation, asymmetric hero crops, framed visual stages, controlled pill shapes for status, circular avatars with edge status dots, and a small radius hierarchy instead of one universal card shape
+- Anti-references (defaults this app must not drift toward): Dark themes, neon cyberpunk, generic AI dashboards, purple gradients everywhere, repeated flat card grids, childish gamification, Zoom clones, flat icon menus, and English-first layouts
 
 ## Agent-native is structural, not visual
 
